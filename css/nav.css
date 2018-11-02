@@ -13,6 +13,9 @@
 	display: table;
 	clear: both;
 }
+header {
+	background-attachment: fixed;
+}
 
 header #cd-logo {
 	margin-bottom: 3em;
