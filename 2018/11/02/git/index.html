@@ -10,7 +10,7 @@
 		
 
 <head><meta name="generator" content="Hexo 3.8.0">
-	<title>思而不学则怠</title>
+	<title>git 的基本使用</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="apple-mobile-web-app-title" content="Amaze UI">
@@ -38,7 +38,7 @@
 
 <!-- header -->
 
-	<header id="header-bg-2">
+	<header id="header-bg-1" style="background-image: url( https://source.unsplash.com/collection/954550/1920x1080 );">	
 
 	
 		<div id="cd-logo"><a href="/"><img src="/img/logo.png" alt="Logo"></a></div>
@@ -54,7 +54,7 @@
 		
 		
 			
-			<p class="page-name">当前文章&nbsp;:&nbsp;《》</p>
+			<p class="page-name">当前文章&nbsp;:&nbsp;《git 的基本使用》</p>
 			
 		
 	
@@ -159,14 +159,20 @@
 				<h1 class="am-article-title blog-text-center">
 					
 					
+	
+		<a href="/2018/11/02/git/" itemprop="url">		
+			git 的基本使用		
+		</a>
+	
+
 				</h1>
 
 				<p class="am-article-meta blog-text-center">
 					<span>
 						<i class="fa fa-clock-o"></i> 
-						<a href="/2018/05/25/Git 概要/" itemprop="url">
-	<time datetime="2018-05-25T10:31:47.000Z" itemprop="datePublished">
-  		2018-05-25
+						<a href="/2018/11/02/git/" itemprop="url">
+	<time datetime="2018-11-01T16:00:00.000Z" itemprop="datePublished">
+  		2018-11-02
   </time>
 </a>    
 &nbsp;
@@ -252,8 +258,7 @@
 </ul>
 <h4 id="忽略已跟踪文件"><a href="#忽略已跟踪文件" class="headerlink" title="忽略已跟踪文件"></a>忽略已跟踪文件</h4><p>从仓库中移除</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git rm a.md <span class="comment"># -f</span></span><br><span class="line">$ git rm --cached a.md</span><br></pre></td></tr></table></figure>
-<p>####查看已暂存和未暂存的修改 </p>
-<p><code>git diff</code>，该命令比较的是<code>工作目录中当前文件</code>和<code>暂存区域</code>快照之间的差异</p>
+<h4 id="查看已暂存和未暂存的修改"><a href="#查看已暂存和未暂存的修改" class="headerlink" title="查看已暂存和未暂存的修改"></a>查看已暂存和未暂存的修改</h4><p><code>git diff</code>，该命令比较的是<code>工作目录中当前文件</code>和<code>暂存区域</code>快照之间的差异</p>
 <p><code>git diff --cached</code>，已暂存的将要添加到下次提交里的内容</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ git diff &lt;file&gt;  <span class="comment"># 比较当前文件和暂存区文件差异</span></span><br><span class="line">$ git diff --staged <span class="comment"># 比较暂存区和版本库差异, 已add，未commit</span></span><br><span class="line">$ git diff --cached <span class="comment"># 比较暂存区和版本库差异</span></span><br><span class="line">$ git diff HEAD <span class="comment"># 工作区(Working tree)和HEAD的差别</span></span><br><span class="line">$ git diff topic master <span class="comment"># 直接将两个分支上最新的提交做diff</span></span><br><span class="line">$ git diff --<span class="built_in">stat</span> <span class="comment"># 查看简单的diff结果</span></span><br><span class="line">$ git diff HEAD^ HEAD <span class="comment"># 比较上次提交和上上次提交</span></span><br><span class="line">$ git diff SHA1 SHA2 <span class="comment"># 比较两个历史版本之间的差异</span></span><br></pre></td></tr></table></figure>
 <h4 id="提交更新"><a href="#提交更新" class="headerlink" title="提交更新"></a>提交更新</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先查看状态</span></span><br><span class="line">$ git status</span><br><span class="line"><span class="comment"># 在提交</span></span><br><span class="line">$ git commit -m <span class="string">"create a.txt"</span></span><br><span class="line"><span class="comment"># 添加到暂存和提交合二为一</span></span><br><span class="line">$ git commit -a -m <span class="string">'added new file'</span></span><br></pre></td></tr></table></figure>
@@ -373,13 +378,13 @@
 
 		<ul class="am-pagination">
     
-    	<li class="am-pagination-prev">
-   		<a class="pull-left" href="/2018/11/02/hello-world/" title="Hello World">
-      		&laquo; 上一篇
+	
+		<li class="am-pagination-next">
+		<a class="pull-right" href="/2018/11/01/hello-world/" title="Hello World">
+			下一篇 &raquo;
 		</a>
 		</li>
-	
-	
+	 
  </ul>
         
 
@@ -467,7 +472,7 @@
 				
 				
 				<!--toc(post.content)-->
-				<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Git-的基本使用"><span class="post-toc-text">Git 的基本使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Git-的诞生"><span class="post-toc-text">Git 的诞生</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#优点"><span class="post-toc-text">优点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安装"><span class="post-toc-text">安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Mac"><span class="post-toc-text">Mac</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#在-Windows-上安装"><span class="post-toc-text">在 Windows 上安装</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#初始配置"><span class="post-toc-text">初始配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#用户信息"><span class="post-toc-text">用户信息</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#文本编辑器"><span class="post-toc-text">文本编辑器</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#检查配置信息"><span class="post-toc-text">检查配置信息</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#获取帮助"><span class="post-toc-text">获取帮助</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#版本库、工作区和暂存区"><span class="post-toc-text">版本库、工作区和暂存区</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#获取Git仓库"><span class="post-toc-text">获取Git仓库</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#在现有目录中初始化仓库"><span class="post-toc-text">在现有目录中初始化仓库</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#克隆现有的仓库"><span class="post-toc-text">克隆现有的仓库</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#检查当前文件状态"><span class="post-toc-text">检查当前文件状态</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#忽略文件"><span class="post-toc-text">忽略文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#忽略已跟踪文件"><span class="post-toc-text">忽略已跟踪文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#提交更新"><span class="post-toc-text">提交更新</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#查看提交历史"><span class="post-toc-text">查看提交历史</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#撤消操作"><span class="post-toc-text">撤消操作</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#取消暂存的文件"><span class="post-toc-text">取消暂存的文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#撤消对文件的修改"><span class="post-toc-text">撤消对文件的修改</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#回退版本"><span class="post-toc-text">回退版本</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#远程仓库"><span class="post-toc-text">远程仓库</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#分支"><span class="post-toc-text">分支</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#分支创建"><span class="post-toc-text">分支创建</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#新建别的分支"><span class="post-toc-text">新建别的分支</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#merge"><span class="post-toc-text">merge</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#冲突"><span class="post-toc-text">冲突</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#复位"><span class="post-toc-text">复位</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#查看分支"><span class="post-toc-text">查看分支</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#远程分支"><span class="post-toc-text">远程分支</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#删除远程分支"><span class="post-toc-text">删除远程分支</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#打标签"><span class="post-toc-text">打标签</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#隐藏操作"><span class="post-toc-text">隐藏操作</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Git-别名（sh）"><span class="post-toc-text">Git 别名（sh）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#变基-rebase"><span class="post-toc-text">变基 rebase</span></a></li></ol></li></ol>
+				<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Git-的基本使用"><span class="post-toc-text">Git 的基本使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Git-的诞生"><span class="post-toc-text">Git 的诞生</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#优点"><span class="post-toc-text">优点</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#安装"><span class="post-toc-text">安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#Mac"><span class="post-toc-text">Mac</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#在-Windows-上安装"><span class="post-toc-text">在 Windows 上安装</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#初始配置"><span class="post-toc-text">初始配置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#用户信息"><span class="post-toc-text">用户信息</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#文本编辑器"><span class="post-toc-text">文本编辑器</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#检查配置信息"><span class="post-toc-text">检查配置信息</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#获取帮助"><span class="post-toc-text">获取帮助</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#版本库、工作区和暂存区"><span class="post-toc-text">版本库、工作区和暂存区</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#获取Git仓库"><span class="post-toc-text">获取Git仓库</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#在现有目录中初始化仓库"><span class="post-toc-text">在现有目录中初始化仓库</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#克隆现有的仓库"><span class="post-toc-text">克隆现有的仓库</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#检查当前文件状态"><span class="post-toc-text">检查当前文件状态</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#忽略文件"><span class="post-toc-text">忽略文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#忽略已跟踪文件"><span class="post-toc-text">忽略已跟踪文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#查看已暂存和未暂存的修改"><span class="post-toc-text">查看已暂存和未暂存的修改</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#提交更新"><span class="post-toc-text">提交更新</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#查看提交历史"><span class="post-toc-text">查看提交历史</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#撤消操作"><span class="post-toc-text">撤消操作</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#取消暂存的文件"><span class="post-toc-text">取消暂存的文件</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#撤消对文件的修改"><span class="post-toc-text">撤消对文件的修改</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#回退版本"><span class="post-toc-text">回退版本</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#远程仓库"><span class="post-toc-text">远程仓库</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#分支"><span class="post-toc-text">分支</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#分支创建"><span class="post-toc-text">分支创建</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#新建别的分支"><span class="post-toc-text">新建别的分支</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#merge"><span class="post-toc-text">merge</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#冲突"><span class="post-toc-text">冲突</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#复位"><span class="post-toc-text">复位</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#查看分支"><span class="post-toc-text">查看分支</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#远程分支"><span class="post-toc-text">远程分支</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#删除远程分支"><span class="post-toc-text">删除远程分支</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#打标签"><span class="post-toc-text">打标签</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#隐藏操作"><span class="post-toc-text">隐藏操作</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Git-别名（sh）"><span class="post-toc-text">Git 别名（sh）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#变基-rebase"><span class="post-toc-text">变基 rebase</span></a></li></ol></li></ol>
 			</nav>
 			<div class="post-toc-bar"><div>
 		</div></div></aside>
