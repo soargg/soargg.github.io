@@ -167,118 +167,123 @@
 
                 
 
-                <style>
-    * {
-        margin: 0;
-        padding: 0;
-    }
-    ul, li {
-        list-style: none;
-    }
-    .container {
-        height: 100%;
-        width: 100%;
-    }
-    .cube-box {
-        /* animation: active 15s linear 4.5s infinite; */
-        width: 300px;
-        height: 300px;
-        position: relative;
-        margin: 100px auto 0;
-        transform: rotateX(-20deg) rotateZ(-20deg);
-        transform-style: preserve-3d;
-    }
-    .cube-box:hover.pause {
-        animation-play-state: paused;
-    }
-    .cube-box > .front, .back, .left, .right, .top, .bottom {
-        width: 100%;
-        height: 100%;
-        opacity: .8;
-        position: absolute;
-    }
-    .front {
-        transform: translateZ(150px);
-    }
-    .back {
-        transform: translateZ(-150px) rotateY(180deg);
-    }
-    .left {
-        transform: translateX(-50%) rotateY(-90deg);
-    }
-    .right {
-        transform: translateX(50%) rotateY(90deg);;
-    }
-    .top {
-        transform: translateY(-50%) rotateX(90deg);
-    }
-    .bottom {
-        transform: translateY(50%) rotateX(-90deg);
-    }
+                <!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            ul, li {
+                list-style: none;
+            }
+            .cube-box {
+                animation: active 10s linear 4.5s infinite;
+                width: 300px;
+                height: 300px;
+                position: relative;
+                margin: 100px auto 0;
+                transform: rotateX(-20deg) rotateZ(-20deg);
+                transform-style: preserve-3d;
+            }
+            .cube-box:hover.paused {
+                animation-play-state: paused;
+            }
+            .cube-box > .front, .back, .left, .right, .top, .bottom {
+                width: 100%;
+                height: 100%;
+                opacity: .8;
+                position: absolute;
+            }
+            .front {
+                transform: translateZ(150px);
+            }
+            .back {
+                transform: translateZ(-150px) rotateY(180deg);
+            }
+            .left {
+                transform: translateX(-50%) rotateY(-90deg);
+            }
+            .right {
+                transform: translateX(50%) rotateY(90deg);;
+            }
+            .top {
+                transform: translateY(-50%) rotateX(90deg);
+            }
+            .bottom {
+                transform: translateY(50%) rotateX(-90deg);
+            }
+        
+            @keyframes active {
+                0% {
+                    transform: rotateX(-20deg) rotateZ(-20deg);
+                }
+                100% {
+                    transform: rotateX(340deg) rotateZ(340deg);
+                }
+            }
 
-    @keyframes active {
-        0% {
-            transform: rotateX(-20deg) rotateZ(-20deg);
-        }
-        100% {
-            transform: rotateX(340deg) rotateZ(340deg);
-        }
-    }
-
-    .fragments {
-        position: relative;
-        transition: all 3s linear;
-        width: 100px;
-        height: 100px;
-        box-sizing: border-box;
-        display: inline-block;
-        vertical-align: middle;
-        border: 1px solid pink;
-        background-repeat: no-repeat;
-        background-clip: border-box;
-        background-size: 300px 300px;
-    }
-</style>
-<div class="container">
-    <ul class="cube-box">
+            .fragments {
+                position: relative;
+                transition: all 3s linear;
+                width: 100px;
+                height: 100px;
+                box-sizing: border-box;
+                display: inline-block;
+                vertical-align: middle;
+                border: 1px solid pink;
+                background-repeat: no-repeat;
+                background-clip: border-box;
+                background-size: 300px 300px;
+            }
+            .recovery {
+                left: 0;
+                top: 0;
+            }
+        </style>
+</head>
+<body>
+    <ul class="cube-box paused">
         <li class="front face"></li>
         <li class="back face"></li>
         <li class="left face"></li>
-        <li class="righ facet"></li>
+        <li class="right face"></li>
         <li class="top face"></li>
         <li class="bottom face"></li>
     </ul>
-</div>
 
-<script type="text/javascript">
-    var faces =[].slice.call(document.querySelectorAll('.face'), 0);
-    var fragments = [];
-    faces.forEach(function(element, index) {
-        for(var i = 0; i < 9; i++) {
-            var deviation = Math.floor(Math.random() * 401 - 200);
-            var fragment = document.createElement('div');
-            fragment.style.backgroundImage = 'url(./images/g'+ (index + 1) +'.jpg)';
-            fragment.style.backgroundPosition = -(i % 3 * 100) + 'px ' + (-Math.floor(i / 3)) * 100 + 'px';
-            fragment.style.left = deviation + 'px';
-            fragment.style.top = deviation + 'px';
-            fragment.classList.add('fragments');
-            // 暂存每一个碎片
-            fragments.push(fragment);
-            element.appendChild(fragment);
-        }
-    });
+    <script>
+        var faces =[].slice.call(document.querySelectorAll('.face'), 0);
+        var fragments = [];
+        faces.forEach(function(element, index) {
+            for(var i = 0; i < 9; i++) {
+                var deviation = Math.floor(Math.random() * 401 - 200);
+                var fragment = document.createElement('div');
+                fragment.style.backgroundImage = 'url(./images/g'+ (index + 1) +'.jpg)';
+                fragment.style.backgroundPosition = -(i % 3 * 100) + 'px ' + (-Math.floor(i / 3)) * 100 + 'px';
+                fragment.style.left = deviation + 'px';
+                fragment.style.top = deviation + 'px';
+                fragment.classList.add('fragments');
+                // 暂存每一个碎片
+                fragments.push(fragment);
+                element.appendChild(fragment);
+            }
+        });
 
-    window.addEventListener('scroll',recovery)
-    function recovery (e) {
-        if (document.documentElement.clientHeight - 100 < document.documentElement.scrollTop) {
+        setTimeout(() => {
             fragments.forEach(function(item) {
                 item.style.left = 0;
                 item.style.top = 0;
             });
-            window.removeEventListener('scroll', recovery);
-        }
-    }
-</script>
+        }, 1000) 
+    </script>
+</body>
+</html>
 
             
         </article>
