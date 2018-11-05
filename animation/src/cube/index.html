@@ -10,7 +10,7 @@
 		
 
 <head><meta name="generator" content="Hexo 3.8.0">
-	<title>文章归档: 2018</title>
+	<title>思而不学则怠</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="apple-mobile-web-app-title" content="Amaze UI">
@@ -54,9 +54,8 @@
 		
 		
 			
-			<!-- && is_current('archives/index.html') -->
-			<p class="page-name">文章归档</p>
-		
+			<p class="page-name"></p>
+			
 		
 	
 	
@@ -151,67 +150,99 @@
 		<!--main-->
 		<main> 
 		<div class="page-container">
-		<!-- content srart -->
+		<!--content start-->
 <div class="am-g am-g-fixed blog-fixed blog-content">
-	<div class="am-u-md-8 am-u-sm-12">
-		<div class="archive">
+    <div class="am-u-md-8 am-u-sm-12">
+        <article class="am-article blog-article-p">
 
-			<div class="blog-text-center">
-				
-					<i class="fa fa-book">总计2篇文章</i>
-				
-			</div>  
-
+            <div class="page-header">
+	<div class="blog-text-center">
+		
+			
 			
 
-							
-				
-				
-				
-					
+		  	 		
+	</div>    	 		
+</div>  	 		
 
-					
-					<!--<a href="/archives/2018" class="archive-year">2018</a>-->
-				
-								
-				
-					  
-					<div class="archive-year">
-						<a href="/archives/2018/11">
-							2018-11
-						</a>
-					</div>				
-				  
-				
-				<div class="archive-item">
-					<div class="archive-post-title">									
-						<a href="/2018/11/02/git/" itemprop="url">git 的基本使用</a>
-					</div>
-					<div class="archive-post-time">
-						<a href="/2018/11/02/git/" itemprop="url">11-02</a>
-					</div>
-				</div>		        							
-							
-				
-				
-				
-								
-				  
-				
-				<div class="archive-item">
-					<div class="archive-post-title">									
-						<a href="/2018/11/01/hello-world/" itemprop="url">Hello World</a>
-					</div>
-					<div class="archive-post-time">
-						<a href="/2018/11/01/hello-world/" itemprop="url">11-01</a>
-					</div>
-				</div>		        							
-			
-				
-			    
-		</div>
-	</div>
+                
+
+                
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    html,body{
+        height: 100%;
+    }
+    ul, li {
+        list-style: none;
+    }
+    .cube-box {
+        animation: active 10s linear ;
+        width: 300px;
+        height: 300px;
+        position: relative;
+        margin: 100px auto 0;
+        transform: rotateX(-20deg) rotateZ(-20deg);
+        transform-style: preserve-3d;
+    } 
+    .cube-box > .front, .back, .left, .right, .top, .bottom {
+        width: 100%;
+        height: 100%;
+        opacity: .8;
+        position: absolute;
+    }
+    .front {
+        background: url(./images/g1.jpg) center/cover;
+        transform: translateZ(150px);
+    }
+    .back {
+        background: url(./images/g2.jpg) center/cover;
+        transform: translateZ(-150px) rotateY(180deg);
+    }
+    .left {
+        background: url(./images/g3.jpg) center/cover;
+        transform: translateX(-50%) rotateY(-90deg);
+    }
+    .right {
+        background: url(./images/g4.jpg) center/cover;
+        transform: translateX(50%) rotateY(90deg);;
+    }
+    .top {
+        background: url(./images/g5.jpg) center/cover;
+        transform: translateY(-50%) rotateX(90deg);
+    }
+    .bottom {
+        background: url(./images/g6.jpg) center/cover;
+        transform: translateY(50%) rotateX(-90deg);
+    }
+
+    @keyframes active {
+        0% {
+            transform: rotateX(-20deg) rotateZ(-20deg);
+        }
+        100% {
+            transform: rotateX(340deg) rotateZ(340deg);
+        }
+    }
+</style>
+
+<ul class="cube-box">
+    <li class="front"></li>
+    <li class="back"></li>
+    <li class="left"></li>
+    <li class="right"></li>
+    <li class="top"></li>
+    <li class="bottom"></li>
+</ul>
+
+            
+        </article>
+    </div>
 </div>
+
 
 		</div>
 		</main>
