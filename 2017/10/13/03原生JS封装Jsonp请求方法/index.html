@@ -10,7 +10,7 @@
 		
 
 <head><meta name="generator" content="Hexo 3.8.0">
-	<title>Hello World</title>
+	<title>原生JS封装Jsonp请求方法</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="apple-mobile-web-app-title" content="Amaze UI">
@@ -54,14 +54,14 @@
 		
 		
 			
-			<p class="page-name">当前文章&nbsp;:&nbsp;《Hello World》</p>
+			<p class="page-name">当前文章&nbsp;:&nbsp;《原生JS封装Jsonp请求方法》</p>
 			
 		
 	
 	
 	<!-- others: such as change-bg, time... -->
 	<p class="page-name-other">
-		11/6/2018 
+		11/8/2018 
 		<style type="text/css">
 	header:after {
 		content: '';
@@ -164,8 +164,8 @@
 					
 					
 	
-		<a href="/2018/11/01/hello-world/" itemprop="url">		
-			Hello World		
+		<a href="/2017/10/13/03原生JS封装Jsonp请求方法/" itemprop="url">		
+			原生JS封装Jsonp请求方法		
 		</a>
 	
 
@@ -174,9 +174,9 @@
 				<p class="am-article-meta blog-text-center">
 					<span>
 						<i class="fa fa-clock-o"></i> 
-						<a href="/2018/11/01/hello-world/" itemprop="url">
-	<time datetime="2018-10-31T16:00:00.000Z" itemprop="datePublished">
-  		2018-11-01
+						<a href="/2017/10/13/03原生JS封装Jsonp请求方法/" itemprop="url">
+	<time datetime="2017-10-13T06:04:15.000Z" itemprop="datePublished">
+  		2017-10-13
   </time>
 </a>    
 &nbsp;
@@ -191,15 +191,7 @@
 			<div class="am-article-bd">
 				<div class="content" id="post-content">
 					
-						<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+						<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myJsonp</span>(<span class="params">url, data, callBack</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*随机生成回调函数的名字*/</span></span><br><span class="line">	<span class="keyword">var</span> fnName = <span class="string">"myJsonp"</span> + <span class="built_in">Math</span>.random().toString().replace(<span class="string">"."</span>, <span class="string">""</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/*将函数是暴露在全局*/</span></span><br><span class="line">	<span class="built_in">window</span>[fnName] = callBack;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/*查询字符串*/</span></span><br><span class="line">	<span class="keyword">var</span> queryString = <span class="string">""</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">var</span> attr <span class="keyword">in</span> data) &#123;</span><br><span class="line">		queryString += attr + <span class="string">"="</span> + data[attr] + <span class="string">"&amp;"</span>;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*创建script标签并添加到页面中*/</span></span><br><span class="line">	<span class="keyword">var</span> scriptEle = <span class="built_in">document</span>.createElement(<span class="string">"script"</span>);</span><br><span class="line">	scriptEle.src = url + <span class="string">"?"</span> + queryString + <span class="string">"callback="</span> + fnName;</span><br><span class="line">	scriptEle.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="built_in">document</span>.body.removeChild(scriptEle);</span><br><span class="line">	&#125;;</span><br><span class="line">	<span class="built_in">document</span>.body.appendChild(scriptEle);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 					
 				</div>
@@ -209,12 +201,18 @@
 		<ul class="am-pagination">
     
     	<li class="am-pagination-prev">
-   		<a class="pull-left" href="/2018/11/02/git/" title="git 的基本使用">
+   		<a class="pull-left" href="/2017/11/29/04常见数组操作题/" title="js常见数组操作题">
       		&laquo; 上一篇
 		</a>
 		</li>
 	
 	
+		<li class="am-pagination-next">
+		<a class="pull-right" href="/2017/09/21/02深入理解jsonp/" title="深入理解jsonp">
+			下一篇 &raquo;
+		</a>
+		</li>
+	 
  </ul>
         
 
@@ -294,18 +292,6 @@
 	描述：The TOC module refers to 'https://github.com/codefine/hexo-theme-mellow', include toc.ejs、toc.js、toc.css. All rights reserved by codefine. 
 -->
 
-	
-		<aside class="post-widget">
-			<nav class="post-toc-wrap" id="post-toc">
-				
-					<strong>文章目录</strong>
-				
-				
-				<!--toc(post.content)-->
-				<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Quick-Start"><span class="post-toc-text">Quick Start</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Create-a-new-post"><span class="post-toc-text">Create a new post</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Run-server"><span class="post-toc-text">Run server</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Generate-static-files"><span class="post-toc-text">Generate static files</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Deploy-to-remote-sites"><span class="post-toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
-			</nav>
-			<div class="post-toc-bar"><div>
-		</div></div></aside>
 	
 
 	</div>

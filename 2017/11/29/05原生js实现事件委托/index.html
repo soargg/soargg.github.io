@@ -1,0 +1,450 @@
+<!--
+	作者：GaoLIye
+	时间：2018-09-25
+	描述：There may be a bug, but don't worry, QiLing(器灵) says that it can work normally!
+-->
+
+
+	<!DOCTYPE html>
+	<html>
+		
+
+<head><meta name="generator" content="Hexo 3.8.0">
+	<title>原生js实现事件委托</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="apple-mobile-web-app-title" content="Amaze UI">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+    <meta name="author" content="GaO LIyE">
+    <meta name="keywords" content="javascript html css3">
+    <meta name="description" content="">
+   	<!-- css -->
+	<link rel="stylesheet" href="/css/style.css">
+
+	<!-- favicon -->
+	<link href="/img/favicon.ico" rel="Shortcut Icon" type="image/ico">
+	
+	<!-- font-awesome -->
+	<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+	<body>	
+		<!--Preloader-->
+<div id="preloader">
+	<div id="status">
+		<img alt="PRELOADER" src="/img/logo.png">
+	</div>
+</div>
+<!--Preloader end-->
+
+<!-- header -->
+
+	<header id="header-bg-1" style="background-image: url( https://source.unsplash.com/collection/954550/1920x1080 );">	
+
+	
+		<div id="cd-logo"><a href="/"><img src="/img/logo.png" alt="Logo"></a></div>
+	
+	
+	<!-- motto or description -->
+		
+ 		<p class="motto"></p>
+	
+	
+	<!-- current page name or title -->
+	
+		
+		
+			
+			<p class="page-name">当前文章&nbsp;:&nbsp;《原生js实现事件委托》</p>
+			
+		
+	
+	
+	<!-- others: such as change-bg, time... -->
+	<p class="page-name-other">
+		11/8/2018 
+		<style type="text/css">
+	header:after {
+		content: '';
+		position: relative;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		background: #222222;
+		opacity: .5;
+		z-index: -1;
+	}
+	
+	.change-header-bg{
+		font-style: normal;
+	}
+	.change-header-bg i{
+		text-align: center;
+		cursor: pointer;
+		pointer-events: bounding-box;
+	}
+	@media(max-width:512px) {
+		.change-header-bg {
+			display: none;
+			visibility: hidden;
+		}
+	}
+	
+</style>
+
+<script type="text/javascript">
+	function changeHeaderBg(){
+		var random_bg = Math.floor(Math.random() * 109 + 1);
+		var bg = 'url(https://raw.githubusercontent.com/tall-ui/Random-img/master/1.jpg' + random_bg + '.jpg)';
+		$("#header-bg-2").css("background-image", bg);
+	}
+</script>
+
+<span class="change-header-bg">
+	——&nbsp;<i class="fa fa-camera-retro" onclick="changeHeaderBg()"></i>	
+</span>
+	</p>		
+</header>
+
+<!-- nav -->
+<div id="cd-nav">
+	<a href="#0" title="menu" class="cd-nav-trigger"><span></span></a>
+
+	<nav id="cd-main-nav">
+		<ul>
+			
+      		<li class="fa fa-/">
+           		<a href="/" title="主页">主页</a>	
+      		</li>
+    		
+      		<li class="fa fa-/archives">
+           		<a href="/archives" title="归档">归档</a>	
+      		</li>
+    		
+      		<li class="fa fa-/categories">
+           		<a href="/categories" title="分类">分类</a>	
+      		</li>
+    		
+      		<li class="fa fa-/tags">
+           		<a href="/tags" title="标签">标签</a>	
+      		</li>
+    		
+      		<li class="fa fa-/about">
+           		<a href="/about" title="关于">关于</a>	
+      		</li>
+    		
+      		<li class="fa fa-/games">
+           		<a href="/games" title="h5游戏">h5游戏</a>	
+      		</li>
+    		
+      		<li class="fa fa-/animation">
+           		<a href="/animation" title="小小动画">小小动画</a>	
+      		</li>
+    		
+    		
+        	
+		</ul>
+	</nav>
+</div>
+
+		<!--main-->
+		<main> 
+		<div class="page-container">
+		<!-- content srart -->
+<div class="am-g am-g-fixed blog-fixed blog-content">
+	<div class="am-u-md-8 am-u-sm-12">
+
+		<article class="am-article blog-article-p">
+
+			<div class="am-article-hd">
+				
+
+
+				<h1 class="am-article-title blog-text-center">
+					
+					
+	
+		<a href="/2017/11/29/05原生js实现事件委托/" itemprop="url">		
+			原生js实现事件委托		
+		</a>
+	
+
+				</h1>
+
+				<p class="am-article-meta blog-text-center">
+					<span>
+						<i class="fa fa-clock-o"></i> 
+						<a href="/2017/11/29/05原生js实现事件委托/" itemprop="url">
+	<time datetime="2017-11-29T08:12:04.000Z" itemprop="datePublished">
+  		2017-11-29
+  </time>
+</a>    
+&nbsp;
+					</span>
+					
+					<span>						
+						
+							<i class="fa fa-tags"></i>
+							
+								<a href="#委托 代理" title="委托 代理" rel="1">委托 代理</a>&nbsp;
+													 											
+						
+					</span>
+				</p>
+			</div>
+
+			<div class="am-article-bd">
+				<div class="content" id="post-content">
+					
+						<h2 id="事件委托"><a href="#事件委托" class="headerlink" title="事件委托"></a>事件委托</h2><p>还有一个名字叫事件代理，JavaScript高级程序设计上讲：事件委托就是利用事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件。</p>
+<h3 id="事件委托原理"><a href="#事件委托原理" class="headerlink" title="事件委托原理"></a>事件委托原理</h3><p>事件委托是利用事件的冒泡原理来实现的，何为事件冒泡呢？就是事件从最深的节点开始，然后逐步向上传播事件，举个例子：页面上有这么一个节点树，div&gt;ul&gt;li&gt;a;比如给最里面的a加一个click点击事件，那么这个事件就会一层一层的往外执行，执行顺序a&gt;li&gt;ul&gt;div，有这样一个机制，那么我们给最外面的div加点击事件，那么里面的ul，li，a做点击事件的时候，都会冒泡到最外层的div上，所以都会触发，这就是事件委托，委托它们父级代为执行事件。</p>
+<h3 id="事件委托的优点"><a href="#事件委托的优点" class="headerlink" title="事件委托的优点"></a>事件委托的优点</h3><ol>
+<li>不必为每一个元素依次注册一个相同的事件，提高性能；</li>
+<li>父级元素内新添加的被委托的元素，也会具有该事件；</li>
+</ol>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">delegateEvent</span>(<span class="params">pEle,childStr,eventStr,fn</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(pEle.addEventListener)&#123;</span><br><span class="line">    <span class="comment">//如果浏览器支持addEventListener</span></span><br><span class="line">    pEle.addEventListener(eventStr,innerFn,<span class="literal">false</span>);</span><br><span class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(pEle.attachEvent)&#123;</span><br><span class="line">    <span class="comment">//如果浏览器支持attachEvent</span></span><br><span class="line">    pEle.attachEvent(<span class="string">"on"</span>+eventStr,innerFn)</span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="comment">//否则</span></span><br><span class="line">    pEle[<span class="string">"on"</span>+eventStr] = innerFn;</span><br><span class="line">  &#125;;</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">innerFn</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="comment">// 获取事件对象</span></span><br><span class="line">    <span class="keyword">var</span> e = e || <span class="built_in">window</span>.event;</span><br><span class="line">    <span class="comment">// 得到事件源，即原始触发事件的元素</span></span><br><span class="line">    <span class="keyword">var</span> target = e.target || e.srcElement;</span><br><span class="line">    <span class="comment">// 执行业务</span></span><br><span class="line">    <span class="keyword">if</span>(target.nodeName.toLowerCase() == childStr)&#123;</span><br><span class="line">      fn.call(target,e);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p><strong>mouseenter</strong>与<strong>mouseleave</strong>，只有在鼠标离开穿过或离开被选中元素时，才会触发该事件；即该事件没有事件冒泡；所以不能通过事件代理来为子元素代理这两个事件。</p>
+
+					
+				</div>
+			</div>
+		</article>
+
+		<ul class="am-pagination">
+    
+    	<li class="am-pagination-prev">
+   		<a class="pull-left" href="/2018/11/02/01git/" title="git 的基本使用">
+      		&laquo; 上一篇
+		</a>
+		</li>
+	
+	
+		<li class="am-pagination-next">
+		<a class="pull-right" href="/2017/11/29/04常见数组操作题/" title="js常见数组操作题">
+			下一篇 &raquo;
+		</a>
+		</li>
+	 
+ </ul>
+        
+
+		<div class="theme-annie-comment-button-container">
+	<button id="annie-comment-button" class="theme-annie-comment-button" onclick="Annie_Comment()">
+		加载评论
+		<!--加载评论-->
+	</button>
+</div>
+
+<div id="annie-comment-container" class="theme-annie-comment-main-container">
+
+	
+		
+			<!-- comment valine -->
+			<!-- show valine comment -->
+<div id="valineComment" class="comment"></div>
+
+<!-- valine`s js & css -->
+<script>
+	window.jQuery || document.write('<script src="/js/jquery-2.1.1.min.js"><\/script>')
+</script>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/js/valine.min.js"></script>
+<link rel="stylesheet" href="/css/comment.css">
+
+<script>
+	var checkExistComment = setInterval(function() {
+		if( $('#valineComment').length ) {
+			new Valine({
+				// AV 对象来自上面引入av-min.js(老司机们不要开车➳♡゛扎心了老铁)
+				av: AV,
+				//使用id寻找div元素（使用class可能找不到）
+				el: '#valineComment',
+				emoticon_url: 'https://cloud.panjunwen.com/alu',
+				emoticon_list: ["吐.png", "期待.png", "高兴.png", "吐血倒地.png", "哭泣.png", "欢呼.png"],
+				app_id: "3333....", //获取APP ID
+				app_key: "3333......", //获取APP KEY
+				placeholder: "no any!", //评论框占位提示文字        			
+			});
+			clearInterval(checkExistComment);
+		}
+	}, 100);
+</script>
+		
+	
+
+</div>
+
+<script type="text/javascript">
+	/* Show Comment */
+	var Annie_Comment = function() {
+		function Show_Hidden(obj) {
+			obj.style.display = 'block';
+		}
+		
+		//var obutton = $('#annie-comment-button');
+		//var obutton = $('#annie-comment-container');
+		var obutton = document.getElementById("annie-comment-button" || "0");
+		var odiv = document.getElementById("annie-comment-container");
+		if( 'obutton' ) {
+			obutton.onclick = function() {
+				Show_Hidden(odiv);
+				$("#annie-comment-button").css("display", 'none');
+				return false;
+			}
+		}
+	};
+
+	(function Annie_Init() {
+		Annie_Comment();
+	})();
+</script>
+		
+		<!--
+	时间：2018-09-24
+	描述：The TOC module refers to 'https://github.com/codefine/hexo-theme-mellow', include toc.ejs、toc.js、toc.css. All rights reserved by codefine. 
+-->
+
+	
+		<aside class="post-widget">
+			<nav class="post-toc-wrap" id="post-toc">
+				
+					<strong>文章目录</strong>
+				
+				
+				<!--toc(post.content)-->
+				<ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#事件委托"><span class="post-toc-text">事件委托</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#事件委托原理"><span class="post-toc-text">事件委托原理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#事件委托的优点"><span class="post-toc-text">事件委托的优点</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实现"><span class="post-toc-text">实现</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#注意"><span class="post-toc-text">注意</span></a></li></ol></li></ol>
+			</nav>
+			<div class="post-toc-bar"><div>
+		</div></div></aside>
+	
+
+	</div>
+</div>
+		</div>
+		</main>
+		
+		<!--footer-->
+		<footer>
+	<div class="blog-text-center">
+		<div class="theme-annie-social">
+				
+				
+					<a href="https://github.com/soargg" title="Github" target="_blank"><i class="fa fa-github"></i>&nbsp;</a>
+					
+				
+				
+					<a href="/soargly@163.com" title="Email" target="_blank"><i class="fa fa-envelope-o"></i>&nbsp;</a>
+					
+					
+				
+					<a href="/" title="Twitter" target="_blank"><i class="fa fa-twitter"></i>&nbsp;</a>
+						
+				
+		</div>
+	</div>
+
+	<div class="blog-text-center">
+		<div class="theme-annie-copyright">
+			
+				&copy; 2017 - 2018, content by GaO LIyE. All Rights Reserved.			       	
+			
+		</div>
+	</div>
+
+	<div class="blog-text-center">
+		<div class="theme-annie-copyright">
+			<a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a> github <a href="https://github.com/soargg" title="Soargg" target="_blank" rel="noopener">Soargg</a> by Gaoliye.		
+		</div>
+	</div>
+</footer>
+		<!-- <script src="http://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script> -->
+
+<script>
+	window.jQuery || document.write('<script src="/js/jquery-2.1.1.min.js"><\/script>')
+</script>
+
+<style>
+	.motto {
+		color: #000000;
+		font-size: 20px;
+		margin: 100px 25% 0;
+		width: 50%;
+		line-height: 1.4;
+		font-family:"KaiTi", "STXingkai", "Source Sans Pro", "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", FreeSans, Arimo, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", FontAwesome, sans-serif;
+		text-align: center;
+	}
+	@media(max-width: 890px) {
+		.motto {	
+			margin: 100px 10% 0;
+			width: 80%;
+		}
+	}
+	@media(max-width: 890px) {
+		.motto {
+			margin: 100px 5% 0;
+			width: 90%;
+		}
+	}
+</style>
+
+
+	<script src="/js/motto.js"></script>
+	<script type="text/javascript">
+		$(".motto").html(getMingYanContent());
+	</script>	
+
+
+
+
+
+
+
+	<script type="text/javascript" src="/js/toc.js"></script>
+
+
+<script type="text/javascript" src="/js/main.js"></script>
+
+<script type="text/javascript">
+	//generate a random img that pre_name 'from 0 to 110'
+	var random_bg = Math.floor(Math.random() * 109 + 1);
+
+	//var bg = 'url(/img/random/' + random_bg + '.jpg)';		
+	var bg = 'url(https://raw.githubusercontent.com/tall-ui/Random-img/master/1.jpg' + random_bg + '.jpg)';
+
+	$("#header-bg-2").css("background-image", bg);
+</script>
+		
+		<!--back to top-->
+        <style type="text/css">
+	#totop {
+		background: white;
+		border-radius: 50%;
+		position: fixed;
+		right: 5.4%;
+		bottom: 80px;
+		cursor: pointer;
+	}
+	
+	#totop a {
+		color: #474747;
+		background-color: transparent;
+		padding: 10px;
+		text-decoration: none;
+	}
+	
+	@media(max-width:512px) {
+		#totop {
+			display: none;
+			visibility: hidden;
+		}
+	}
+</style>
+
+
+	<div id="totop">
+  		<a href="javascript:;" class="fa fa-arrow-up"></a>
+	</div>
+
+	</body>
+	</html>
+
