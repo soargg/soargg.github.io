@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小游戏2048</title>
+    <script src="game.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        .clearfix{
+            zoom:1;
+        }
+        .clearfix:after{
+            content: "";
+            display: block;
+            clear: both;
+            height: 0;
+            line-height: 0;
+            visibility:hidden;
+        }
+        body{
+            min-width: 1366px;
+            background: url("images/12.jpg") no-repeat center;
+            background-size:1366px auto ;
+        }
+
+        div {
+            text-align: center;
+        }
+
+        .info {
+            position: relative;
+            left: 200px;
+            width: 320px;
+            margin: 60px auto;
+        }
+        .info .count {
+            font: bold 25px/70px "幼圆";
+        }
+
+        ul {
+            list-style: none;
+            margin: 0 auto;
+        }
+
+        li {
+            width: 68px;
+            height: 68px;
+            margin: 5px;
+            border: 1px solid #2b3140;
+            float: left;
+            font: bold 30px/68px "华文楷体";
+            background-color: cornsilk;
+        }
+
+        .info .bottom {
+            line-height: 80px;
+        }
+        .info .bottom #reStart{
+            width: 100px;
+            height: 55px;
+            font-size:22px;
+            color: dimgrey;
+            font-family: "华文琥珀";
+            background-color: aliceblue;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="info clearfix">
+    <div class="count">
+        <span>当前得分：</span>
+        <span id="score">0000</span>
+    </div>
+    <ul id="uu">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <div class="bottom">
+        <input type="button" value="重新开始" id="reStart"/>
+    </div>
+</div>
+
+<script>
+    //初始化处理
+    initialGame(arrObj);
+    document.onkeydown =game;
+
+    my$("reStart").onclick=function(){
+        initialGame(arrObj);
+        document.onkeydown =game;
+    }
+
+</script>
+</body>
+</html>
