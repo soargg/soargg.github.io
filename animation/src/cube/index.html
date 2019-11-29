@@ -61,7 +61,7 @@
 	
 	<!-- others: such as change-bg, time... -->
 	<p class="page-name-other">
-		11/12/2018 
+		11/29/2019 
 		<style type="text/css">
 	header:after {
 		content: '';
@@ -167,7 +167,8 @@
 
                 
 
-                <style>
+                
+<style>
     * {
         margin: 0;
         padding: 0;
@@ -180,13 +181,15 @@
         width: 100%;
     }
     .cube-box {
-        animation: active 15s linear 4.5s infinite;
         width: 300px;
         height: 300px;
         position: relative;
         margin: 100px auto 0;
         transform: rotateX(-20deg) rotateZ(-20deg);
         transform-style: preserve-3d;
+    }
+    .active {
+        animation: active 15s linear 4.5s infinite;
     }
     .cube-box:hover.pause {
         animation-play-state: paused;
@@ -198,21 +201,27 @@
         position: absolute;
     }
     .front {
+        -webkit-transform: translateZ(150px);
         transform: translateZ(150px);
     }
     .back {
+        -webkit-transform: translateZ(-150px) rotateY(180deg);
         transform: translateZ(-150px) rotateY(180deg);
     }
     .left {
+        -webkit-transform: translateX(-50%) rotateY(-90deg);
         transform: translateX(-50%) rotateY(-90deg);
     }
     .right {
-        transform: translateX(50%) rotateY(90deg);;
+        -webkit-transform: translateX(50%) rotateY(90deg);
+        transform: translateX(50%) rotateY(90deg);
     }
     .top {
+        -webkit-transform: translateY(-50%) rotateX(90deg);
         transform: translateY(-50%) rotateX(90deg);
     }
     .bottom {
+        -webkit-transform: translateY(50%) rotateX(-90deg);
         transform: translateY(50%) rotateX(-90deg);
     }
 
@@ -244,12 +253,11 @@
         <li class="front face"></li>
         <li class="back face"></li>
         <li class="left face"></li>
-        <li class="righ facet"></li>
+        <li class="right face"></li>
         <li class="top face"></li>
         <li class="bottom face"></li>
     </ul>
 </div>
-
 <script type="text/javascript">
     var faces =[].slice.call(document.querySelectorAll('.face'), 0);
     var fragments = [];
@@ -275,10 +283,12 @@
                 item.style.left = 0;
                 item.style.top = 0;
             });
+            document.querySelector('.cube-box').className = 'cube-box active pause';
             window.removeEventListener('scroll', recovery);
         }
     }
 </script>
+
 
             
         </article>
@@ -312,7 +322,7 @@
 	<div class="blog-text-center">
 		<div class="theme-annie-copyright">
 			
-				&copy; 2017 - 2018, content by GaO LIyE. All Rights Reserved.			       	
+				&copy; 2017 - 2019, content by GaO LIyE. All Rights Reserved.			       	
 			
 		</div>
 	</div>

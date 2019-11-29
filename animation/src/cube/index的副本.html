@@ -10,7 +10,7 @@
 		
 
 <head><meta name="generator" content="Hexo 3.8.0">
-	<title>文章归档: 2017/11</title>
+	<title>思而不学则怠</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="apple-mobile-web-app-title" content="Amaze UI">
@@ -54,9 +54,8 @@
 		
 		
 			
-			<!-- && is_current('archives/index.html') -->
-			<p class="page-name">文章归档</p>
-		
+			<p class="page-name"></p>
+			
 		
 	
 	
@@ -151,67 +150,154 @@
 		<!--main-->
 		<main> 
 		<div class="page-container">
-		<!-- content srart -->
+		<!--content start-->
 <div class="am-g am-g-fixed blog-fixed blog-content">
-	<div class="am-u-md-8 am-u-sm-12">
-		<div class="archive">
+    <div class="am-u-md-8 am-u-sm-12">
+        <article class="am-article blog-article-p">
 
-			<div class="blog-text-center">
-				
-					<i class="fa fa-book">总计6篇文章</i>
-				
-			</div>  
-
+            <div class="page-header">
+	<div class="blog-text-center">
+		
+			
 			
 
-							
-				
-				
-				
-					
+		  	 		
+	</div>    	 		
+</div>  	 		
 
-					
-					<!--<a href="/archives/2017" class="archive-year">2017</a>-->
-				
-								
-				
-					  
-					<div class="archive-year">
-						<a href="/archives/2017/11">
-							2017-11
-						</a>
-					</div>				
-				  
-				
-				<div class="archive-item">
-					<div class="archive-post-title">									
-						<a href="/2017/11/29/05原生js实现事件委托/" itemprop="url">原生js实现事件委托</a>
-					</div>
-					<div class="archive-post-time">
-						<a href="/2017/11/29/05原生js实现事件委托/" itemprop="url">11-29</a>
-					</div>
-				</div>		        							
-							
-				
-				
-				
-								
-				  
-				
-				<div class="archive-item">
-					<div class="archive-post-title">									
-						<a href="/2017/11/29/04常见数组操作题/" itemprop="url">js常见数组操作题</a>
-					</div>
-					<div class="archive-post-time">
-						<a href="/2017/11/29/04常见数组操作题/" itemprop="url">11-29</a>
-					</div>
-				</div>		        							
-			
-				
-			    
-		</div>
-	</div>
+                
+
+                <!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>魔方</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        ul, li {
+            list-style: none;
+        }
+        .container {
+            height: 100%;
+            width: 100%;
+        }
+        .cube-box {
+            animation: active 15s linear 4.5s infinite;
+            width: 300px;
+            height: 300px;
+            position: relative;
+            margin: 100px auto 0;
+            transform: rotateX(-20deg) rotateZ(-20deg);
+            transform-style: preserve-3d;
+        }
+        .cube-box:hover.pause {
+            animation-play-state: paused;
+        }
+        .cube-box > .front, .back, .left, .right, .top, .bottom {
+            width: 100%;
+            height: 100%;
+            opacity: .8;
+            position: absolute;
+        }
+        .front {
+            -webkit-transform: translateZ(150px);
+            transform: translateZ(150px);
+        }
+        .back {
+            -webkit-transform: translateZ(-150px) rotateY(180deg);
+            transform: translateZ(-150px) rotateY(180deg);
+        }
+        .left {
+            -webkit-transform: translateX(-50%) rotateY(-90deg);
+            transform: translateX(-50%) rotateY(-90deg);
+        }
+        .right {
+            -webkit-transform: translateX(50%) rotateY(90deg);
+            transform: translateX(50%) rotateY(90deg);
+        }
+        .top {
+            -webkit-transform: translateY(-50%) rotateX(90deg);
+            transform: translateY(-50%) rotateX(90deg);
+        }
+        .bottom {
+            -webkit-transform: translateY(50%) rotateX(-90deg);
+            transform: translateY(50%) rotateX(-90deg);
+        }
+
+        @keyframes active {
+            0% {
+                transform: rotateX(-20deg) rotateZ(-20deg);
+            }
+            100% {
+                transform: rotateX(340deg) rotateZ(340deg);
+            }
+        }
+
+        .fragments {
+            position: relative;
+            transition: all 3s linear;
+            width: 100px;
+            height: 100px;
+            box-sizing: border-box;
+            display: inline-block;
+            vertical-align: middle;
+            border: 1px solid pink;
+            background-repeat: no-repeat;
+            background-clip: border-box;
+            background-size: 300px 300px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <ul class="cube-box">
+            <li class="front face"></li>
+            <li class="back face"></li>
+            <li class="left face"></li>
+            <li class="right face"></li>
+            <li class="top face"></li>
+            <li class="bottom face"></li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        var faces =[].slice.call(document.querySelectorAll('.face'), 0);
+        var fragments = [];
+        faces.forEach(function(element, index) {
+            for(var i = 0; i < 9; i++) {
+                var deviation = Math.floor(Math.random() * 401 - 200);
+                var fragment = document.createElement('div');
+                fragment.style.backgroundImage = 'url(./images/g'+ (index + 1) +'.jpg)';
+                fragment.style.backgroundPosition = -(i % 3 * 100) + 'px ' + (-Math.floor(i / 3)) * 100 + 'px';
+                fragment.style.left = deviation + 'px';
+                fragment.style.top = deviation + 'px';
+                fragment.classList.add('fragments');
+                // 暂存每一个碎片
+                fragments.push(fragment);
+                element.appendChild(fragment);
+            }
+        });
+
+        setTimeout(function() {
+            fragments.forEach(function(item) {
+                item.style.left = 0;
+                item.style.top = 0;
+            });
+        })
+    </script>
+</body>
+</html>
+
+
+            
+        </article>
+    </div>
 </div>
+
 
 		</div>
 		</main>
